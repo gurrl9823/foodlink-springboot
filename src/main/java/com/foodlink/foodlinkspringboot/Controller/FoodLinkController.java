@@ -11,6 +11,6 @@ public class FoodLinkController {
     @GetMapping("/getMenu")
     public String getMenu() {
 
-        return "FoodLink";
+        return "menu";
     }
 }
