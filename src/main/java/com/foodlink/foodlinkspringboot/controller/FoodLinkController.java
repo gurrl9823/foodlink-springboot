@@ -1,4 +1,4 @@
-package com.foodlink.foodlinkspringboot.Controller;
+package com.foodlink.foodlinkspringboot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
