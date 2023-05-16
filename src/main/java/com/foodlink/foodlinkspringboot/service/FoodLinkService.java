@@ -16,6 +16,8 @@ public class FoodLinkService {
 
     public ResponseDto getMenu(ParamDto requestDto) {
 
+        ResponseDto recipe = foodLinkRepository.getMenu(requestDto.getIngredients());
+
         return ResponseDto.builder().foodName("김치찌개").ingredients("김치, 돼지고기").recipe("1. 고기를 익힌다. 2. 김치와 함께 볶는다.").build();
     }
 

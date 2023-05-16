@@ -1,0 +1,3 @@
+flask:
+  server:
+    address: http://flask-server/api
