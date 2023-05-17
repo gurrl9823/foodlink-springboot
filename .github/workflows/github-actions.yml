@@ -52,7 +52,7 @@ jobs:
           ${{ runner.os }}-gradle-
 
 
-#    실행권한을 주지 않으면 에러가 뜹니다.
+#    gradlew에 실행권한을 주지 않으면 에러가 뜹니다.
 #    Run ./gradlew build
 #    /home/runner/work/_temp/ec1db276-8c5b-4000-a69f-6ae292aee7e6.sh:
 #      line 1:
