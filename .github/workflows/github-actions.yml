@@ -72,7 +72,7 @@ jobs:
 #      이때 이미지 이름은 <docker_hub_username>/<image_name> 로 설정됩니다.
 #      도커 허브에 이미지를 publish 하기 위해서는 앞에 유저이름을 꼭 붙여야 합니다.
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/foodlnk-springboot .
+      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/foodlink-springboot .
 
 
 #    docker/login-action 이라는 Action을 사용하여 도커 로그인을 진행합니다.
@@ -87,4 +87,4 @@ jobs:
 
 #    Docker Hub 저장소에 이미지를 push 합니다.
     - name: Docker Hub push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/foodlnk-springboot
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/foodlink-springboot
