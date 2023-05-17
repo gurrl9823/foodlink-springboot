@@ -52,6 +52,16 @@ jobs:
           ${{ runner.os }}-gradle-
 
 
+#    실행권한을 주지 않으면 에러가 뜹니다.
+#    Run ./gradlew build
+#    /home/runner/work/_temp/ec1db276-8c5b-4000-a69f-6ae292aee7e6.sh:
+#      line 1:
+#        ./gradlew: Permission denied
+#    Error: Process completed with exit code 126.
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+
 #      ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생깁니다.
 #      관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분
     - name: Build with Gradle
