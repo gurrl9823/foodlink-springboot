@@ -25,3 +25,14 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+// Spring Boot 2.5.0 이상부터는 libs 폴더 아래 ~~plain.jar 파일이 함께 만들어집니다.
+// 해당 기능을 끄는 부분입니다.
+jar {
+    enabled = false
+}
+
+// libs 폴더 아래 생성될 jar 파일의 이름을 설정합니다.
+//bootJar{
+//    archiveFileName = 'app.jar'
+//}
