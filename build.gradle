@@ -36,3 +36,6 @@ jar {
 //bootJar{
 //    archiveFileName = 'app.jar'
 //}
+
+// bootJar 와 Jar task 의 차이, ~plain.jar 파일에 대한 내용은 아래 제 블로그 글에서 확인해주세요.
+// https://orange-makiyato.tistory.com/89
