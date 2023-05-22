@@ -4,8 +4,8 @@ import com.foodlink.foodlinkspringboot.dto.ParamDto;
 import com.foodlink.foodlinkspringboot.dto.ResponseDto;
 import com.foodlink.foodlinkspringboot.service.FoodLinkService;
 import com.foodlink.foodlinkspringboot.vo.RequestParamVo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +19,12 @@ public class FoodLinkController {
     private FoodLinkService foodLinkService;
 
     @GetMapping("/getMenu")
-    public ResponseEntity<ResponseDto> getMenu(RequestParamVo requestParamVo) {
+    public ResponseEntity<List<ResponseDto>> getMenu(RequestParamVo requestParamVo) {
 
         ParamDto requestDto = requestParamVo.makeRefiendRequest();
 
-        ResponseDto recipe = foodLinkService.getMenu(requestDto);
+        List<ResponseDto> recipe = foodLinkService.getMenu(requestDto);
 
-       return new ResponseEntity<>(recipe, HttpStatus.OK);
+        return ResponseEntity.ok(recipe);
     }
 }
