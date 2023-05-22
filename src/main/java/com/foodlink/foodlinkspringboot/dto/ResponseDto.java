@@ -2,6 +2,8 @@ package com.foodlink.foodlinkspringboot.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -10,6 +12,6 @@ import lombok.*;
 public class ResponseDto {
 
     private String foodName;
-    private String[] ingredients;
-    private String[] recipe;
+    private List<String> ingredients;
+    private List<String> recipe;
 }
