@@ -1,12 +1,12 @@
 package com.foodlink.foodlinkspringboot.repository;
 
 import com.foodlink.foodlinkspringboot.dto.ResponseDto;
-
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,11 +20,18 @@ public class FoodLinkRepository {
 
         String flaskUrl = flaskAddr + "?ingredients=" + ingredients;
 
-        ResponseDto[] response = new RestTemplate().getForObject(flaskUrl, ResponseDto[].class);
-        if (response == null) {
-            return List.of(ResponseDto.builder().foodName("").ingredients(new String[]{""}).recipe(new String[]{""}).build());
-        }
+        ResponseEntity<List<ResponseDto>> responseEntity = new RestTemplate().exchange(
+                flaskUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<ResponseDto>>() {}
+        );
 
-        return Arrays.asList(response);
+//        Arrays response = new RestTemplate().getForObject(flaskUrl, Arrays.class);
+//        if (response == null) {
+//            return List.of(ResponseDto.builder().foodName("").ingredients(new String[]{""}).recipe(new String[]{""}).build());
+//        }
+
+        return responseEntity.getBody();
     }
 }
