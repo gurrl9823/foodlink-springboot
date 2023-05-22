@@ -20,18 +20,17 @@ public class FoodLinkRepository {
 
         String flaskUrl = flaskAddr + "?ingredients=" + ingredients;
 
-        ResponseEntity<List<ResponseDto>> responseEntity = new RestTemplate().exchange(
+        ResponseEntity<ResponseDto[]> responseEntity = new RestTemplate().exchange(
                 flaskUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<ResponseDto>>() {}
+                new ParameterizedTypeReference<ResponseDto[]>() {}
         );
 
-//        Arrays response = new RestTemplate().getForObject(flaskUrl, Arrays.class);
-//        if (response == null) {
-//            return List.of(ResponseDto.builder().foodName("").ingredients(new String[]{""}).recipe(new String[]{""}).build());
-//        }
+        if (responseEntity.getBody() == null) {
+            return List.of(ResponseDto.builder().foodName("").ingredients(new String[]{""}).recipe(new String[]{""}).build());
+        }
 
-        return responseEntity.getBody();
+        return Arrays.asList(responseEntity.getBody());
     }
 }
