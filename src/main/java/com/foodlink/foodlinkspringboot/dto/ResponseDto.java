@@ -12,6 +12,6 @@ import java.util.List;
 public class ResponseDto {
 
     private String foodName;
-    private String ingredients;
-    private String recipe;
+    private String[] ingredients;
+    private String[] recipe;
 }
