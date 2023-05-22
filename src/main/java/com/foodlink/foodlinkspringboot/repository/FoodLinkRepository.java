@@ -12,15 +12,15 @@ public class FoodLinkRepository {
     @Value("${flask.server.address}")
     private String flaskAddr;
 
-    public List<ResponseDto> getMenu(String ingredients) {
+    public ResponseDto[] getMenu(String ingredients) {
 
         String flaskUrl = flaskAddr + "?ingredients=" + ingredients;
 
         ResponseDto[] response = new RestTemplate().getForObject(flaskUrl, ResponseDto[].class);
         if (response == null) {
-            return List.of(ResponseDto.builder().foodName("").ingredients("").recipe("").build());
+            return new ResponseDto[]{ResponseDto.builder().foodName("").ingredients(new String[]{""}).recipe(new String[]{""}).build()};
         }
 
-        return List.of(response);
+        return response;
     }
 }

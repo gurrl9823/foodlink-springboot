@@ -19,11 +19,11 @@ public class FoodLinkController {
     private FoodLinkService foodLinkService;
 
     @GetMapping("/getMenu")
-    public ResponseEntity<List<ResponseDto>> getMenu(RequestParamVo requestParamVo) {
+    public ResponseEntity<ResponseDto[]> getMenu(RequestParamVo requestParamVo) {
 
         ParamDto requestDto = requestParamVo.makeRefiendRequest();
 
-        List<ResponseDto> recipe = foodLinkService.getMenu(requestDto);
+        ResponseDto[] recipe = foodLinkService.getMenu(requestDto);
 
         return ResponseEntity.ok(recipe);
     }
