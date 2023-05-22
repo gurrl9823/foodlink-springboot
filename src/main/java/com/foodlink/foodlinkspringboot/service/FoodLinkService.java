@@ -15,11 +15,11 @@ public class FoodLinkService {
     @Autowired
     private FoodLinkRepository foodLinkRepository;
 
-    public ResponseDto[] getMenu(ParamDto requestDto) {
+    public List<ResponseDto> getMenu(ParamDto requestDto) {
 
         // param으로 들어온 재료가 저장소에 있는 재료명에 있는지 체크
 
-        ResponseDto[] recipe = foodLinkRepository.getMenu(requestDto.getIngredients());
+        List<ResponseDto> recipe = foodLinkRepository.getMenu(requestDto.getIngredients());
 
         return recipe;
     }
