@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
+
 @Repository
 public class FoodLinkRepository {
 
@@ -20,17 +21,11 @@ public class FoodLinkRepository {
 
         String flaskUrl = flaskAddr + "?ingredients=" + ingredients;
 
-        ResponseEntity<List<ResponseDto>> responseEntity = new RestTemplate().exchange(
-                flaskUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<ResponseDto>>() {}
-        );
-
-        if (responseEntity.getBody() == null) {
+        List<ResponseDto> response = new RestTemplate().getForObject(flaskUrl, List.class);
+        if (response == null) {
             return List.of(ResponseDto.builder().foodName("").ingredients(List.of("")).recipe(List.of("")).build());
         }
 
-        return responseEntity.getBody();
+        return response;
     }
 }
