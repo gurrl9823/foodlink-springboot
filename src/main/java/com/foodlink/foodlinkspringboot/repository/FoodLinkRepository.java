@@ -28,7 +28,7 @@ public class FoodLinkRepository {
         );
 
         if (responseEntity.getBody() == null) {
-            return List.of(ResponseDto.builder().foodName("").ingredients(new String[]{""}).recipe(new String[]{""}).build());
+            return List.of(ResponseDto.builder().foodName("").ingredients(List.of("")).recipe(List.of("")).build());
         }
 
         return responseEntity.getBody();
